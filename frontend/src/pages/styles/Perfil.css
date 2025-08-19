@@ -1,0 +1,180 @@
+/* ===========================
+   Contenedor principal de la página de perfil
+   =========================== */
+   /* Contenedor principal */
+
+
+.perfil-page {
+  display: flex; /* Usamos flex para organizar la columna principal */
+  flex-direction: column; /* Todo en columna: header arriba, contenido abajo */
+  padding: 2rem; /* Espaciado interno */
+  background-color: #ffffff; /* Color de fondo de toda la sección */
+  min-height: calc(100vh - 60px); /* Altura total menos header (aprox) */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Fuente general */
+    min-height: 100vh;
+width: 8000vh;
+}
+
+/* ===========================
+   Contenedor del icono y la info del usuario
+   =========================== */
+.perfil-container {
+  display: flex; /* Flex para alinear icono a la izquierda y info a la derecha */
+  flex-direction: row; /* Horizontal */
+  background-color: #ecebeb; /* Fondo blanco */
+  padding: 2rem; /* Espaciado interno */
+  gap: 2rem; /* Espacio entre icono e info */
+  align-items: flex-start; /* Alinea el icono e info arriba */
+  width: 75vw; /* Ocupa todo el ancho de la pantalla */
+  box-sizing: border-box; /* Incluye padding en el ancho total */
+  margin-top: 90px;
+  border-radius: 10px;
+}
+
+/* ===========================
+   Icono del usuario
+   =========================== */
+.perfil-icon {
+  font-size: 10rem; /* Tamaño grande del icono */
+  flex-shrink: 0; /* No deja que se achique al reducir ancho */
+  cursor: pointer; /* Para indicar que se puede cambiar el icono */
+  transition: transform 0.2s; /* Efecto suave al hacer hover */
+}
+
+.perfil-icon:hover {
+  transform: scale(1.1); /* Aumenta un poco al pasar el mouse */
+}
+
+/* ===========================
+   Contenedor de la información del perfil
+   =========================== */
+.perfil-info {
+  flex: 1; /* Ocupa todo el espacio restante a la derecha */
+  display: flex; /* Flex vertical para cada fila */
+  flex-direction: column;
+  gap: 1rem; /* Espacio entre cada fila */
+}
+
+/* ===========================
+   Cada fila de información del usuario
+   =========================== */
+.perfil-row {
+  display: flex; /* Flex horizontal: label a la izquierda, valor a la derecha */
+  justify-content: space-between; /* Espacio entre label e input/span */
+  align-items: center; /* Centra verticalmente */
+  color: #000000;
+}
+
+.perfil-row label {
+  font-weight: 600; /* Negrita para el label */
+  color: #353535; /* Color del texto del label */
+  width: 25%; /* Ocupa 25% del ancho */
+}
+
+.perfil-row span,
+.perfil-row input {
+  width: 100%; /* Ocupa 70% del ancho */
+  padding: 0.5rem 0.7rem; /* Espaciado interno */
+  font-size: 1rem; /* Tamaño de texto */
+}
+
+/* ===========================
+   Inputs al editar
+   =========================== */
+.perfil-row input {
+  border: 1px solid #a9a9a9; /* Borde gris */
+  border-radius: 6px; /* Bordes redondeados */
+  transition: border 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+  background-color: #ffffff;
+  color: #000000;
+  
+}
+
+.perfil-row input:focus {
+  border-color: #4a90e2; /* Borde azul al enfocar */
+  box-shadow: 0 0 6px rgba(74, 144, 226, 0.3); /* Sombra suave */
+  outline: none; /* Sin outline predeterminado */
+}
+
+/* ===========================
+   Botones de editar, guardar y cancelar
+   =========================== */
+.perfil-buttons {
+  display: flex; /* Alineación horizontal de botones */
+  gap: 1rem; /* Espacio entre botones */
+  margin-top: 1rem; /* Separación del contenido de arriba */
+}
+
+.perfil-buttons button {
+  padding: 0.6rem 1.5rem; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 8px; /* Bordes redondeados */
+  font-size: 1rem; /* Tamaño del texto */
+  cursor: pointer; /* Mano al pasar el mouse */
+  transition: background 0.3s, transform 0.2s; /* Transición suave */
+}
+
+.perfil-buttons button:hover {
+  transform: translateY(-2px); /* Pequeño efecto al pasar el mouse */
+}
+
+.perfil-buttons .guardar {
+  background-color: #124a8a; /* Azul para guardar */
+  color: #fff; /* Texto blanco */
+}
+
+.perfil-buttons .guardar:hover {
+  background-color: #357abd; /* Azul más oscuro al hover */
+}
+
+.perfil-buttons .cancelar {
+  background-color: #ccc; /* Gris para cancelar */
+  color: #333; /* Texto oscuro */
+}
+
+.perfil-buttons .cancelar:hover {
+  background-color: #aaa; /* Gris más oscuro al hover */
+}
+
+/* ===========================
+   Responsivo para pantallas pequeñas
+   =========================== */
+@media (max-width: 900px) {
+  .perfil-container {
+    flex-direction: column; /* Vertical en móvil */
+    align-items: center; /* Centrado */
+    width: 100%; /* Ocupa todo el ancho */
+  }
+
+  .perfil-icon {
+    margin-bottom: 1rem; /* Separación del contenido */
+  }
+
+  .perfil-row {
+    flex-direction: column; /* Label arriba, valor abajo */
+    align-items: flex-start; /* Alineación izquierda */
+  }
+
+  .perfil-row label,
+  .perfil-row span,
+  .perfil-row input {
+    width: 100%; /* Ocupa todo el ancho en móvil */
+  }
+
+  .perfil-buttons {
+    flex-direction: column; /* Botones verticales */
+    width: 100%; /* Ancho completo */
+  }
+
+  .perfil-buttons button {
+    width: 100%; /* Botones ocupan todo el ancho */
+  }
+
+
+ .editar {
+  background-color: #30537a;
+  color: white;
+  border-radius: 8px;
+  padding: 0.6rem 1.5rem;
+}
+}

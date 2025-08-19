@@ -1,0 +1,28 @@
+# --- Node.js ---
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+pnpm-lock.yaml
+
+# --- Logs ---
+*.log
+logs/
+*.out
+*.err
+
+# --- Variables de entorno ---
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# --- Directorios de build (React / frontend) ---
+build/
+dist/
+
+# --- Archivos temporales ---
+.DS_Store
+Thumbs.db

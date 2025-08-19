@@ -1,0 +1,136 @@
+/* Contenedor principal */
+.landing-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e9e9e9;
+  min-height: 100vh;
+}
+
+
+
+/* Menú móvil */
+.mobile-menu-button {
+  display: none;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: white;
+}
+
+.menu-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.mobile-nav {
+  background-color: #004080;
+  padding: 10px;
+}
+
+.mobile-nav-link {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+/* Sección de características */
+.featu-section {
+  padding: 60px 20px;
+}
+
+
+
+.container h2 {
+  color: #131921;
+  font-size: 28px;
+  text-align: center;
+}
+
+.container p {
+  color: #131921;
+  font-size: 17px;
+  text-align: fixed;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+.feature-item {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease;
+  border: 1px solid #a4a4a4;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+}
+
+.feature-item h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #131921;
+  margin-bottom: 12px;
+}
+
+.feature-item p {
+  font-size: 16px;
+  color: #35393f;
+  line-height: 1.6;
+}
+
+/* Sección de términos y botón */
+.cta-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.terms-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.terms-label input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+  accent-color: #004080;
+}
+
+.ctaa-button {
+  background-color: #1667b7;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 660px;
+}
+
+.ctaa-button:hover {
+  background-color: #0059b3;
+}
+
+.ctaa-button:disabled {
+  background-color: #1667b7;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
