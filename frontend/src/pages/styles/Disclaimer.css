@@ -1,0 +1,50 @@
+/* Contenedor del disclaimer */
+#disclaimer .container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 10px;
+    background-color: #f5f5f5; /* recuadro gris */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align:justify; /* para centrar los botones */
+}
+
+/* Botones */
+#disclaimer .ctaa-button,
+#disclaimer .cancel {
+    min-width: 165px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: block; /* uno debajo del otro */
+    margin: 10px auto; /* centrado con espacio entre ellos */
+}
+
+/* Botón Comenzar */
+#disclaimer .ctaa-button {
+    background-color: #2474c9;
+    color: #fff;
+}
+
+
+/* Botón Cancelar */
+#disclaimer .cancel {
+    background-color: #b04343e2;
+    color: #ffffff;
+}
+
+/* Botón deshabilitado */
+#disclaimer .ctaa-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+h3{
+    color: #000000;
+    margin-left: 50px;
+}
+.terms-label{
+    font-size: 15px;
+
+}

@@ -27,6 +27,7 @@ function Login() {
       localStorage.setItem("email", usuario.email); // 🔑
       localStorage.setItem("rol_id", usuario.rol_id.toString());
       localStorage.setItem("token", token || ""); // aunque sea vacío
+      localStorage.setItem("nombre", usuario.nombre);
 
       setMensaje(`✅ Bienvenido, ${usuario.nombre} (rol: ${usuario.rol_id})`);
 

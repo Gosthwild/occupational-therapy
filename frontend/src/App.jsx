@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Formulario from "./pages/Formulario";
 import Perfil from "./pages/Perfil";
 import Resultados from "./pages/Resultados";
+import Disclaimer from "./pages/Disclaimer";
 
 
 
@@ -23,7 +24,7 @@ function App() {
         <Route path="/formulario" element={<Formulario/>}/>
         <Route path="/perfil" element={<Perfil/>}/>
         <Route path="/resultados" element={<Resultados/>}/>
-
+        <Route path="/disclaimer" element={<Disclaimer/>}/> 
         <Route path="/home" element={<Home/>}/>
 
       </Routes>

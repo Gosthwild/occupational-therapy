@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/Customer.css';
 
 const Customer = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [acceptedTerms, setAcceptedTerms] = useState(false);
+    const [userName, setUserName] = useState("Usuario"); // valor por defecto
     const navigate = useNavigate();
 
-    const userName = "Nicolás "; // Puedes hacerlo dinámico si tienes login
+    // Obtener el nombre del usuario desde localStorage al montar el componente
+    useEffect(() => {
+        const storedName = localStorage.getItem("nombre");
+        if (storedName) {
+            setUserName(storedName);
+        }
+    }, []);
 
     const handleStart = () => {
-        if (acceptedTerms) {
-            navigate("/formulario");
-        } else {
-            alert("Por favor acepta los términos y condiciones antes de continuar.");
-        }
+        navigate("/disclaimer", { state: { userName } });
     };
 
     return (
@@ -111,32 +113,15 @@ const Customer = () => {
                             <p>Evaluamos las formas en que el niño se comunica, tanto verbal como no verbalmente, y su capacidad para expresar necesidades.</p>
                         </div>
                     </div>
-                </div>
 
-                <div className="cta-container">
-                    <label className="terms-label">
-                        <input
-                            type="checkbox"
-                            checked={acceptedTerms}
-                            onChange={(e) => setAcceptedTerms(e.target.checked)}
-                        />
-                        Acepto los términos y condiciones y el tratamiento de la información.
-                    </label>
-                    <br />
-                </div>
-
-                <div>
-                    <button
-                        className="ctaa-button"
-                        onClick={handleStart}
-                        disabled={!acceptedTerms}
-                        style={{
-                            opacity: acceptedTerms ? 1 : 0.6,
-                            cursor: acceptedTerms ? 'pointer' : 'not-allowed'
-                        }}
-                    >
-                        Iniciar evaluación
-                    </button>
+                    <div style={{ marginTop: '20px' }}>
+                        <button
+                            className="ctaa-button"
+                            onClick={handleStart}
+                        >
+                            Comenzar
+                        </button>
+                    </div>
                 </div>
             </section>
 

@@ -1,180 +1,218 @@
 /* ===========================
    Contenedor principal de la página de perfil
    =========================== */
-   /* Contenedor principal */
-
-
 .perfil-page {
-  display: flex; /* Usamos flex para organizar la columna principal */
-  flex-direction: column; /* Todo en columna: header arriba, contenido abajo */
-  padding: 2rem; /* Espaciado interno */
-  background-color: #ffffff; /* Color de fondo de toda la sección */
-  min-height: calc(100vh - 60px); /* Altura total menos header (aprox) */
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; /* Fuente general */
-    min-height: 100vh;
-width: 8000vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  min-height: 100vh;
+  width: 210vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* ===========================
    Contenedor del icono y la info del usuario
    =========================== */
 .perfil-container {
-  display: flex; /* Flex para alinear icono a la izquierda y info a la derecha */
-  flex-direction: row; /* Horizontal */
-  background-color: #ecebeb; /* Fondo blanco */
-  padding: 2rem; /* Espaciado interno */
-  gap: 2rem; /* Espacio entre icono e info */
-  align-items: flex-start; /* Alinea el icono e info arriba */
-  width: 75vw; /* Ocupa todo el ancho de la pantalla */
-  box-sizing: border-box; /* Incluye padding en el ancho total */
-  margin-top: 90px;
+  display: flex;
+  flex-direction: row;
+  background-color: #f9f7f7;
+  padding: 5rem;
+  gap: 5rem;
+  align-items: flex-start;
+  width: 70vw;
+  box-sizing: border-box;
+  margin-top: 150px;
+  margin-left: 230px;
   border-radius: 10px;
+  border: 1px solid #dcd7d7;
 }
 
 /* ===========================
    Icono del usuario
    =========================== */
 .perfil-icon {
-  font-size: 10rem; /* Tamaño grande del icono */
-  flex-shrink: 0; /* No deja que se achique al reducir ancho */
-  cursor: pointer; /* Para indicar que se puede cambiar el icono */
-  transition: transform 0.2s; /* Efecto suave al hacer hover */
+  font-size: 10rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
 .perfil-icon:hover {
-  transform: scale(1.1); /* Aumenta un poco al pasar el mouse */
+  transform: scale(1.1);
 }
 
 /* ===========================
-   Contenedor de la información del perfil
+   Información del perfil
    =========================== */
 .perfil-info {
-  flex: 1; /* Ocupa todo el espacio restante a la derecha */
-  display: flex; /* Flex vertical para cada fila */
+  flex: 1;
+  display: flex;
   flex-direction: column;
-  gap: 1rem; /* Espacio entre cada fila */
+  gap: 1rem;
 }
 
-/* ===========================
-   Cada fila de información del usuario
-   =========================== */
 .perfil-row {
-  display: flex; /* Flex horizontal: label a la izquierda, valor a la derecha */
-  justify-content: space-between; /* Espacio entre label e input/span */
-  align-items: center; /* Centra verticalmente */
-  color: #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #494949;
 }
 
 .perfil-row label {
-  font-weight: 600; /* Negrita para el label */
-  color: #353535; /* Color del texto del label */
-  width: 25%; /* Ocupa 25% del ancho */
+  font-weight: 600;
+  color: #353535;
+  width: 25%;
 }
 
 .perfil-row span,
 .perfil-row input {
-  width: 100%; /* Ocupa 70% del ancho */
-  padding: 0.5rem 0.7rem; /* Espaciado interno */
-  font-size: 1rem; /* Tamaño de texto */
+  width: 100%;
+  padding: 0.5rem 0.7rem;
+  font-size: 1.1rem;
 }
 
 /* ===========================
    Inputs al editar
    =========================== */
 .perfil-row input {
-  border: 1px solid #a9a9a9; /* Borde gris */
-  border-radius: 6px; /* Bordes redondeados */
-  transition: border 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+  border: 1px solid #d5d4d4;
+  border-radius: 6px;
+  transition: border 0.3s, box-shadow 0.3s;
   background-color: #ffffff;
   color: #000000;
-  
 }
 
 .perfil-row input:focus {
-  border-color: #4a90e2; /* Borde azul al enfocar */
-  box-shadow: 0 0 6px rgba(74, 144, 226, 0.3); /* Sombra suave */
-  outline: none; /* Sin outline predeterminado */
+  border-color: #d5d6d6;
+  box-shadow: 0 0 6px rgba(70, 71, 71, 0.3);
+  outline: none;
 }
 
 /* ===========================
-   Botones de editar, guardar y cancelar
+   Botones
    =========================== */
 .perfil-buttons {
-  display: flex; /* Alineación horizontal de botones */
-  gap: 1rem; /* Espacio entre botones */
-  margin-top: 1rem; /* Separación del contenido de arriba */
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
 }
 
 .perfil-buttons button {
-  padding: 0.6rem 1.5rem; /* Espaciado interno */
-  border: none; /* Sin borde */
-  border-radius: 8px; /* Bordes redondeados */
-  font-size: 1rem; /* Tamaño del texto */
-  cursor: pointer; /* Mano al pasar el mouse */
-  transition: background 0.3s, transform 0.2s; /* Transición suave */
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
 }
 
 .perfil-buttons button:hover {
-  transform: translateY(-2px); /* Pequeño efecto al pasar el mouse */
+  transform: translateY(-2px);
 }
 
 .perfil-buttons .guardar {
-  background-color: #124a8a; /* Azul para guardar */
-  color: #fff; /* Texto blanco */
+  background-color: #194172;
+  color: #fff;
 }
 
 .perfil-buttons .guardar:hover {
-  background-color: #357abd; /* Azul más oscuro al hover */
+  background-color: #194172;
 }
 
 .perfil-buttons .cancelar {
-  background-color: #ccc; /* Gris para cancelar */
-  color: #333; /* Texto oscuro */
+  background-color: #db3232;
+  color: #ffffff;
 }
 
 .perfil-buttons .cancelar:hover {
-  background-color: #aaa; /* Gris más oscuro al hover */
+  background-color: #b72222;
+}
+
+.editar {
+  background-color: #194172;
+  color: white;
+  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s, transform 0.2s;
+  width: 220px;
+   margin-top: 2rem;
+}
+
+.editar:hover {
+  background-color: #21405d;
+  transform: translateY(-2px);
 }
 
 /* ===========================
-   Responsivo para pantallas pequeñas
+   Toast de notificación
+   =========================== */
+.mensaje-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #323232;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  animation: fadeIn 0.3s ease, fadeOut 0.3s ease 2.7s;
+}
+
+.mensaje-toast.success {
+  background-color: #2e7d32; /* Verde */
+}
+
+.mensaje-toast.error {
+  background-color: #c62828; /* Rojo */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+/* ===========================
+   Responsivo
    =========================== */
 @media (max-width: 900px) {
   .perfil-container {
-    flex-direction: column; /* Vertical en móvil */
-    align-items: center; /* Centrado */
-    width: 100%; /* Ocupa todo el ancho */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-left: 0;
   }
 
   .perfil-icon {
-    margin-bottom: 1rem; /* Separación del contenido */
+    margin-bottom: 1rem;
   }
 
   .perfil-row {
-    flex-direction: column; /* Label arriba, valor abajo */
-    align-items: flex-start; /* Alineación izquierda */
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .perfil-row label,
   .perfil-row span,
   .perfil-row input {
-    width: 100%; /* Ocupa todo el ancho en móvil */
+    width: 100%;
   }
 
   .perfil-buttons {
-    flex-direction: column; /* Botones verticales */
-    width: 100%; /* Ancho completo */
+    flex-direction: column;
+    width: 100%;
   }
 
   .perfil-buttons button {
-    width: 100%; /* Botones ocupan todo el ancho */
+    width: 100%;
   }
-
-
- .editar {
-  background-color: #30537a;
-  color: white;
-  border-radius: 8px;
-  padding: 0.6rem 1.5rem;
-}
 }

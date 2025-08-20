@@ -8,11 +8,13 @@ function Perfil() {
   const [usuario, setUsuario] = useState(null);
   const [editando, setEditando] = useState(false);
   const [formulario, setFormulario] = useState({});
+  const [mensaje, setMensaje] = useState(""); // ✅ mensaje dinámico
+  const [tipoMensaje, setTipoMensaje] = useState("success"); // success | error
   const navigate = useNavigate();
 
   useEffect(() => {
-    const email = localStorage.getItem("email"); 
-    const token = localStorage.getItem("token"); 
+    const email = localStorage.getItem("email");
+    const token = localStorage.getItem("token");
 
     if (!email) {
       navigate("/login");
@@ -27,7 +29,10 @@ function Perfil() {
         setUsuario(res.data);
         setFormulario(res.data);
       } catch (error) {
-        console.error("Error al obtener usuario:", error.response?.data || error.message);
+        console.error(
+          "Error al obtener usuario:",
+          error.response?.data || error.message
+        );
       }
     };
 
@@ -45,10 +50,14 @@ function Perfil() {
       });
       setUsuario(formulario);
       setEditando(false);
-      alert("Perfil actualizado ✅");
+      setTipoMensaje("success");
+      setMensaje("✅ Perfil actualizado correctamente");
+      setTimeout(() => setMensaje(""), 3000);
     } catch (error) {
       console.error("Error al actualizar:", error.response?.data || error.message);
-      alert("Error al actualizar perfil ❌");
+      setTipoMensaje("error");
+      setMensaje("❌ Error al actualizar perfil");
+      setTimeout(() => setMensaje(""), 3000);
     }
   };
 
@@ -56,13 +65,15 @@ function Perfil() {
 
   return (
     <div className="perfil-page">
-      {/* Header idéntico a Customer */}
+      {/* Header */}
       <header className="header">
         <div className="header-content">
           <div className="header-inner">
             <div className="logo-container">
               <div className="logo-wrapper">
-                <div className="logo-icon"><span className="logo-letter">C</span></div>
+                <div className="logo-icon">
+                  <span className="logo-letter">C</span>
+                </div>
                 <div>
                   <div className="logo-title">CARYAN</div>
                   <div className="logo-subtitle">Insights</div>
@@ -71,23 +82,43 @@ function Perfil() {
             </div>
 
             <nav className="desktop-nav">
-              <button className="nav-link" onClick={() => navigate("/customer")}>Inicio</button>
-              <button className="nav-link" onClick={() => navigate("/perfil")}>Perfil</button>
-              <button className="nav-link" onClick={() => navigate("/resultados")}>Resultados</button>
-              <button className="nav-link" onClick={() => { localStorage.clear(); navigate("/login"); }}>Salir</button>
+              <button className="nav-link" onClick={() => navigate("/customer")}>
+                Inicio
+              </button>
+              <button className="nav-link" onClick={() => navigate("/perfil")}>
+                Perfil
+              </button>
+              <button className="nav-link" onClick={() => navigate("/resultados")}>
+                Resultados
+              </button>
+              <button
+                className="nav-link salir"
+                onClick={() => {
+                  localStorage.clear();
+                  navigate("/login");
+                }}
+              >
+                Salir
+              </button>
             </nav>
           </div>
         </div>
       </header>
 
+      {/* ✅ Toast flotante */}
+      {mensaje && <div className={`mensaje-toast ${tipoMensaje}`}>{mensaje}</div>}
+
       {/* Contenedor de perfil */}
       <div className="perfil-container">
         {/* Icono / foto de usuario */}
-        <div className="perfil-icon" onClick={() => document.getElementById('fotoInput').click()}>
+        <div
+          className="perfil-icon"
+          onClick={() => document.getElementById("fotoInput").click()}
+        >
           {usuario.foto ? (
             <img src={usuario.foto} alt="Usuario" />
           ) : (
-            "👤"
+            "🧑‍💼"
           )}
           <input
             type="file"
@@ -98,7 +129,8 @@ function Perfil() {
               const file = e.target.files[0];
               if (file) {
                 const reader = new FileReader();
-                reader.onload = () => setUsuario({ ...usuario, foto: reader.result });
+                reader.onload = () =>
+                  setUsuario({ ...usuario, foto: reader.result });
                 reader.readAsDataURL(file);
               }
             }}
@@ -111,7 +143,13 @@ function Perfil() {
             <div className="perfil-row" key={campo}>
               <label>{campo.toUpperCase()}:</label>
               {editando ? (
-                <input type="text" name={campo} value={formulario[campo] || ""} onChange={handleChange} />
+                <input
+                  type="text"
+                  name={campo}
+                  value={formulario[campo] || ""}
+                  onChange={handleChange}
+                  disabled={campo === "email" || campo === "cedula"} // ❌ no editables
+                />
               ) : (
                 <span>{usuario[campo]}</span>
               )}
@@ -120,11 +158,23 @@ function Perfil() {
 
           {editando ? (
             <div className="perfil-buttons">
-              <button onClick={handleUpdate}>💾 Guardar</button>
-              <button onClick={() => { setFormulario(usuario); setEditando(false); }}>❌ Cancelar</button>
+              <button className="guardar" onClick={handleUpdate}>
+                Guardar
+              </button>
+              <button
+                className="cancelar"
+                onClick={() => {
+                  setFormulario(usuario);
+                  setEditando(false);
+                }}
+              >
+                Cancelar
+              </button>
             </div>
           ) : (
-            <button className="editar" onClick={() => setEditando(true)}>Actualizar Información</button>
+            <button className="editar" onClick={() => setEditando(true)}>
+               Actualizar Información
+            </button>
           )}
         </div>
       </div>
