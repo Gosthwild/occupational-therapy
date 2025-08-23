@@ -13,18 +13,16 @@ function Perfil() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const email = localStorage.getItem("email");
     const token = localStorage.getItem("token");
-
-    if (!email) {
+    if (!token) {
       navigate("/login");
       return;
     }
 
     const fetchUsuario = async () => {
       try {
-        const res = await api.get(`/api/pg/usuarios/${email}`, {
-          headers: { Authorization: `Bearer ${token || ""}` },
+        const res = await api.get(`/api/pg/usuarios/${localStorage.getItem("email")}`, {
+          headers: { Authorization: `Bearer ${token}` },
         });
         setUsuario(res.data);
         setFormulario(res.data);
@@ -33,6 +31,9 @@ function Perfil() {
           "Error al obtener usuario:",
           error.response?.data || error.message
         );
+        if (error.response?.status === 401) {
+          navigate("/login"); // token inválido, redirigir
+        }
       }
     };
 
@@ -45,7 +46,7 @@ function Perfil() {
 
   const handleUpdate = async () => {
     try {
-      await api.put(`/api/pg/usuarios/${usuario.email}`, formulario, {
+      await api.put(`/api/pg/usuarios`, formulario, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token") || ""}` },
       });
       setUsuario(formulario);
@@ -88,7 +89,7 @@ function Perfil() {
               <button className="nav-link" onClick={() => navigate("/perfil")}>
                 Perfil
               </button>
-              <button className="nav-link" onClick={() => navigate("/resultados")}>
+              <button className="nav-link" onClick={() => navigate("/misformularios")}>
                 Resultados
               </button>
               <button
@@ -115,11 +116,7 @@ function Perfil() {
           className="perfil-icon"
           onClick={() => document.getElementById("fotoInput").click()}
         >
-          {usuario.foto ? (
-            <img src={usuario.foto} alt="Usuario" />
-          ) : (
-            "🧑‍💼"
-          )}
+          {usuario.foto ? <img src={usuario.foto} alt="Usuario" /> : "🧑‍💼"}
           <input
             type="file"
             id="fotoInput"
@@ -173,7 +170,7 @@ function Perfil() {
             </div>
           ) : (
             <button className="editar" onClick={() => setEditando(true)}>
-               Actualizar Información
+              Actualizar Información
             </button>
           )}
         </div>

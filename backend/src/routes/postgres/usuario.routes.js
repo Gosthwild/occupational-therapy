@@ -1,16 +1,15 @@
-// src/routes/postgres/usuarios.pg.routes.js
 const express = require("express");
 const router = express.Router();
 const UsuarioDAO = require("../../dao/postgres/usuarioDAO");
 const usuarioDAO = new UsuarioDAO();
+const authMiddleware = require("../../middleware/auth"); // ✅ importar middleware
 
-// ✅ GET: Obtener un usuario por email
-router.get("/:email", async (req, res) => {
+// GET protegido: obtener usuario por email
+router.get("/:email", authMiddleware, async (req, res) => {
   try {
     const user = await usuarioDAO.buscarPorEmail(req.params.email);
     if (!user) return res.status(404).json({ error: "Usuario no encontrado" });
 
-    // devolvemos solo los datos que quieres mostrar en el perfil
     res.json({
       nombre: user.nombre,
       apellido: user.apellido,
@@ -24,15 +23,15 @@ router.get("/:email", async (req, res) => {
   }
 });
 
-// ✅ PUT: Actualizar perfil de usuario
-router.put("/:email", async (req, res) => {
-  const email = req.params.email;
+// PUT protegido: actualizar perfil de usuario usando el email del token
+router.put("/", authMiddleware, async (req, res) => {
+  const email = req.user.email; // ✅ email del usuario desde el token
   const { nombre, apellido, cedula, telefono } = req.body;
 
   try {
     await usuarioDAO.actualizarPerfil(email, { nombre, apellido, cedula, telefono });
 
-    res.status(200).json({
+    res.json({
       mensaje: "Perfil actualizado correctamente",
       usuario: { nombre, apellido, cedula, telefono, email },
     });

@@ -41,7 +41,7 @@ const Customer = () => {
                         <nav className="desktop-nav">
                             <button className="nav-link" onClick={() => navigate("/customer")}>Inicio</button>
                             <button className="nav-link" onClick={() => navigate("/perfil")}>Perfil</button>
-                            <button className="nav-link" onClick={() => navigate("/resultados")}>Resultados</button>
+                            <button className="nav-link" onClick={() => navigate("/misformularios")}>Resultados</button>
                             <button className="nav-link" onClick={() => navigate("/")}>Salir</button>
                         </nav>
 

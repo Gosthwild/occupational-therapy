@@ -1,0 +1,128 @@
+/* ===========================
+   CONTENEDOR PRINCIPAL
+   =========================== */
+.mis-formularios {
+  width: 100vw;
+  min-height: 100vh;
+  padding: 40px 50px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fafafa;
+  color: #000000;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* ===========================
+   TARJETAS DE FORMULARIOS
+   =========================== */
+.formulario-card {
+  background-color: #ffffff;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ===========================
+   TITULOS PRINCIPALES
+   =========================== */
+.formulario-card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #484a4d;
+  border-bottom: 1px solid #c1c1c1;
+  padding-bottom: 8px;
+}
+
+/* ===========================
+   SUBTITULOS DE SECCIONES
+   =========================== */
+.formulario-card h3 {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #2e3d49;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 6px;
+}
+
+/* ===========================
+   LABELS Y PARRAFOS
+   =========================== */
+.formulario-card p {
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 4px 0;
+}
+
+.formulario-card p strong {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* ===========================
+   HITOS DEL DESARROLLO
+   =========================== */
+.hitos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.hito-card {
+  border: 1px solid #d1d1d1;
+  border-radius: 8px;
+  padding: 12px 15px;
+  background-color: #f9f9f9;
+}
+
+.hito-card h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #2e3d49;
+}
+
+.hito-card p {
+  font-size: 14px;
+  margin: 3px 0;
+}
+
+.hito-card ul {
+  margin: 5px 0 0 15px;
+  padding: 0;
+  list-style-type: disc;
+}
+
+.hito-card li {
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+/* ===========================
+   MENSAJES DE ERROR O VACÍO
+   =========================== */
+.error {
+  color: #d32f2f;
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 900px) {
+  .mis-formularios {
+    padding: 20px;
+  }
+
+  .hitos {
+    grid-template-columns: 1fr; /* Cada hito ocupa toda la fila en móvil */
+  }
+}

@@ -10,20 +10,25 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:3000",  // 👈 cambia por el dominio real en producción
+  credentials: true
+}));
 app.use(express.json());
 
 // Rutas PostgreSQL
-const registerRoute = require("./routes/register.routes"); // registro de usuarios
-const rutasPostgresUsuarios = require("./routes/postgres/usuario.routes"); // usuarios
-const rolRoutes = require("./routes/postgres/rol.routes"); // roles
+const registerRoute = require("./routes/register.routes"); 
+const usuarioRoutes = require("./routes/postgres/usuario.routes"); 
+const rolRoutes = require("./routes/postgres/rol.routes"); 
 const loginRoutes = require("./routes/login.routes");
+const formularioRoutes = require("./routes/postgres/formulario.routes");
 
 // Endpoints
 app.use("/api/registro", registerRoute);
-app.use("/api/pg/usuarios", rutasPostgresUsuarios);
+app.use("/api/pg/usuarios", usuarioRoutes);
 app.use("/api/roles", rolRoutes);
 app.use("/api/login", loginRoutes);
+app.use("/api/formularios", formularioRoutes);
 
 // Iniciar servidor
 app.listen(PORT, () => {
